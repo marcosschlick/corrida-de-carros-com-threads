@@ -18,7 +18,7 @@ public class Car extends JPanel {
 
 	public Car(String name, Color color, int vertical) {
 		this.image = new ImageIcon(
-				"C:\\Users\\marcos\\eclipse-workspaces\\eclipse-workspace\\corrida-de-carros\\src\\CorridaComThreads/car.png");
+				"C:\\Users\\marcos\\eclipse-workspaces\\eclipse-workspace\\corrida-de-carros-com-threads\\src\\race/car.png");
 		this.name = name;
 		setLocation(20, vertical);
 		setBackground(color);
