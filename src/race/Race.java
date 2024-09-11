@@ -20,8 +20,6 @@ public class Race {
 
 		createThreads(cars, threads, timer, raceScreen);
 
-		threads.forEach(thread -> thread.start());
-
 	}
 
 	private static void createCars(ArrayList<Car> cars, Color[] colors) {
