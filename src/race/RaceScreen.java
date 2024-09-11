@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class RaceScreen extends JFrame {
 
 	private JPanel contentPane;
-	
+
 	public RaceScreen() {
 		setSize(800, 800);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -26,7 +26,7 @@ public class RaceScreen extends JFrame {
 		contentPane.revalidate();
 		contentPane.repaint();
 	}
-	
+
 	public void addLabel(WinnerLabel label) {
 		contentPane.add(label);
 		contentPane.revalidate();

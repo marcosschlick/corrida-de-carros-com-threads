@@ -3,7 +3,6 @@ package race;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public class Race {
 
@@ -13,13 +12,13 @@ public class Race {
 		Color[] colors = { Color.cyan, Color.green, Color.MAGENTA, Color.darkGray, Color.YELLOW, Color.blue, Color.red,
 				Color.WHITE };
 		Timer timer = new Timer();
-		RaceScreen screen = new RaceScreen();
+		RaceScreen raceScreen = new RaceScreen();
 
 		createCars(cars, colors);
 
-		cars.forEach(car -> screen.addCar(car));
+		cars.forEach(car -> raceScreen.addCar(car));
 
-		createThreads(cars, threads, timer,screen);
+		createThreads(cars, threads, timer, raceScreen);
 
 		threads.forEach(thread -> thread.start());
 
@@ -34,22 +33,10 @@ public class Race {
 		}
 	}
 
-	private static void createThreads(ArrayList<Car> carros, ArrayList<Thread> threads, Timer timer, RaceScreen screen) {
-		for (Car carro : carros) {
-			threads.add(new Thread(() -> {
-				TimerTask task = new TimerTask() {
-					@Override
-					public void run() {
-						if (carro.check(carros, screen)) {
-							carro.move();
-
-						} else {
-							this.cancel();
-						}
-					}
-				};
-				timer.scheduleAtFixedRate(task, 0, 50);
-			}));
+	private static void createThreads(ArrayList<Car> cars, ArrayList<Thread> threads, Timer timer,
+			RaceScreen raceScreen) {
+		for (Car car : cars) {
+			threads.add(new CarThread(car, cars, raceScreen));
 		}
 	}
 }
